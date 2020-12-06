@@ -14,13 +14,11 @@ public abstract class Passagem {
 	private Voo voo;
 	protected static List<String> ids = new ArrayList<>();
 
-	public Passagem(Pessoa titular, Assento assento, Cidade partida, Cidade destino) {
+	public Passagem(Pessoa titular, Assento assento) {
 
 		this.titular = titular;
 		this.assento = assento;
 		this.id = geraId();
-		this.partida = partida;
-		this.destino = destino;
 	}
 
 	@SuppressWarnings("unused")
@@ -88,10 +86,10 @@ public abstract class Passagem {
 	}
 
 	public double calculaDistancia(){
-		return DistanciaCidades.calcula(partida.getCodigo().getLatitude(),
-								partida.getCodigo().getLongitude(),
-								destino.getCodigo().getLatitude(),
-								destino.getCodigo().getLongitude());
+		return DistanciaCidades.calcula(voo.getParadas().get(0).getCodigo().getLatitude(),
+								voo.getParadas().get(0).getCodigo().getLongitude(),
+								voo.getDestino().getCodigo().getLatitude(),
+								voo.getDestino().getCodigo().getLongitude());
 	}
 
 	public double cobraTaxaKm() {
