@@ -1,4 +1,6 @@
 
+package sistema;
+
 import java.lang.Math;
 
 	public class DistanciaCidades {
